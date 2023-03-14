@@ -9,10 +9,6 @@ body {
     transform: translateX(-50%);
 }
 
-#divider {
-    margin-top: 5%;
-}
-
 h1 {
     color: white;
     font-family: 'Tilt Neon', cursive;
