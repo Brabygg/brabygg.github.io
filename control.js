@@ -1,5 +1,7 @@
 let player = document.getElementById("tile1");
 
+let isDead = false;
+
 let xPercentFactor = Number.parseInt(window.getComputedStyle(player).getPropertyValue('left'));
 let yPercentFactor = Number.parseInt(window.getComputedStyle(player).getPropertyValue('top'));
 xPercentFactor /= 50;
@@ -18,6 +20,8 @@ setInterval(UpdatePosition, 100)
 setInterval(RecalculateScreenSize, 10);
 
 function HandleInput(key) {
+    if (isDead) return;
+
     if (key.code === "KeyW" && player.dataset.yDir !== '1') {
         player.dataset.xDir = 0;
         player.dataset.yDir = -2;
@@ -44,32 +48,38 @@ function UpdatePosition() {
     yPos /= yPercentFactor;
     let yUpdate = Number.parseInt(player.dataset.yDir);
 
-    newXPos = (xPos + xUpdate).toString();
-    newYPos = (yPos + yUpdate).toString();
+    newXPos = xPos + xUpdate;
+    newYPos = yPos + yUpdate;
 
-    if (newXPos !== 0) {
-        player.style.left = newXPos + '%';
-    }
-    else {
-        console.log("Balls");
-    }
+    if (newXPos > 0 && newXPos < 100)
+        player.style.left = newXPos.toString() + '%';
+    else
+        Die();
 
-    if (newYPos !== 0) {
-        player.style.top = newYPos + '%';
-    }
-    else {
-        console.log("Balls");
-    }
+    if (newYPos > 0 && newYPos < 100)
+        player.style.top = newYPos.toString() + '%';
+    else
+        Die();
 
     console.log(newXPos + " | " + newYPos);
-
-    CheckDeath();
 }
 
-function CheckDeath() {
-    if (newXPos === 0 || newXPos === 100 || newYPos === 0 || newYPos === 100) {
-        console.log("AAAAA");
+function Die() {
+    isDead = true;
+    player.dataset.xDir = 0;
+    player.dataset.yDir = 0;
+
+    let tiles = document.getElementsByClassName("tile");
+
+    for (let i = 0; i < tiles.length; i++) {
+        tiles[i].style.padding = '0px';
     }
+
+    player.style.left = '50%';
+    player.style.top = '50%';
+    player.style.backgroundColor = "black";
+    player.style.color = "white";
+    player.innerHTML = "Refresh to restart";
 }
 
 function RecalculateScreenSize() {
