@@ -3,8 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Brabygg</title>
+    <link rel="stylesheet" href="main_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+    <script src="link_cont.js"></script> 
 </head>
 <body>
-    <img src="" alt="">
+    <div id="content">
+        <img id="logo" src="/Assets/balls.png" alt="Logo">
+        <div class="spacer_s"></div>
+        <div id="text">
+            <h1>I program sometimes</h1>
+            <h3>Here's some things I've made</h3>
+        </div>
+        <div id="main_buttons">
+            <button class="thing_button" onclick="Link('/Snake/snake.html')"
+             title="About 30% finished web port of Snake">Snake</button>
+             <span class="spacer_inline"></span>
+            <button class="thing_button" onclick="Link('https://revolutionarygamesstudio.com')"
+             title="Open-source evolution game I help develop sometimes">Thrive</button>
+        </div>
+        <div class="spacer_s"></div>
+        <div id="contacts">
+            <h3>Contacts & Personal Whatevers</h3>
+            <button class="contact_button" onclick="Link('https://youtube.com/@Brabygg81')"
+            title="Mostly dead">Youtube</button>
+            <span class="spacer_inline"></span>
+            <button class="contact_button" onclick="Link('https://twitter.com/@therealbrabygg')"
+            title="Mostly dead, but DMs are open">Twitter</button>
+            <span class="spacer_inline"></span>
+            <button class="contact_button" onclick="Link('https://github.com/Brabygg')"
+            title="On which I sometimes upload stuff">Github</button>
+        </div>
+    </div>
 </body>
 </html>

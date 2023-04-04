@@ -1,0 +1,51 @@
+body {
+    background-color: #070707;
+    color: white;
+    text-align: center;
+    font-family: 'Tilt Neon', cursive;
+}
+
+#content {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.spacer_s {
+    padding-bottom: 5%;
+}
+
+.spacer_inline {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.thing_button {
+    border-radius: 10px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-color: #070648;
+    color: white;
+    font-size: 30px;
+    font-family: 'Tilt Neon', cursive;
+}
+
+.contact_button {
+    border-radius: 10px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-color: #070648;
+    color: white;
+    font-size: 15px;
+    font-family: 'Tilt Neon', cursive;
+}
+
+h1 {
+    margin-bottom: 0%;
+}
+
+h3 {
+    color: dimgray;
+    margin-top: 0%;
+    margin-bottom: 3%;
+}
