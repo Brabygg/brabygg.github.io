@@ -26,13 +26,20 @@ function ValidateInput() {
     console.log("Control sum is " + contVal);
 
     let contNumArr = splitContNum(contVal);
+    let contNumTens;
     let finalContNum;
 
     if (Number.parseInt(contNumArr[1]) === 0) {
-        finalContNum = Number.parseInt(contNumArr[0]);
+        contNumTens = Number.parseInt(contNumArr[0]) * 10;
     }
     else {
-        finalContNum = Number.parseInt(contNumArr[0]) + 1;
+        contNumTens = (Number.parseInt(contNumArr[0]) + 1) * 10;
+    }
+
+    finalContNum = contNumTens - contVal;
+
+    if (finalContNum !== 0) {
+        finalContNum -= 1;
     }
 
     console.log("Final desired value is " + finalContNum);
