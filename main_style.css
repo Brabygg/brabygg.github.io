@@ -2,7 +2,7 @@ body {
     background-color: #070707;
     color: white;
     text-align: center;
-    font-family: 'Tilt Neon', cursive;
+    font-family: 'Tilt Neon', serif;
 }
 
 #content {
@@ -13,6 +13,10 @@ body {
 
 .spacer_s {
     padding-bottom: 5%;
+}
+
+.spacer_l {
+    padding-bottom: 20%;
 }
 
 .spacer_inline {

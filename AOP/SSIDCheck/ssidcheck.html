@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PRSNR</title>
+    <link rel="stylesheet" href="../../main_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+    <script src="ssidc_cont.js" defer></script>
+    <script src="../../link_cont.js" defer></script>
+</head>
+<body>
+    <div id="content">
+        <h1>Kontrollera personnummer</h1>
+        <div class="spacer_s"></div>
+        <div id="field">
+            <input id="input_field" type="text" maxlength="10" placeholder="ÅÅMMDDXXXX">
+            <button onclick="ValidateInput()">Kontrollera</button>
+            <p id="output"></p>
+        </div>
+        <div class="spacer_l"></div>
+        <button class="thing_button" onclick="Link('/AOP/aop.html')">Tillbaka</button>
+    </div>
+</body>
+</html>
