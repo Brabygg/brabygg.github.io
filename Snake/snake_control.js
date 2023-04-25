@@ -1,4 +1,7 @@
 let player = document.getElementById("tile1");
+let playArea = document.getElementById("content");
+
+let rearTiles = [];
 
 let isDead = false;
 
@@ -6,6 +9,8 @@ let xPercentFactor = Number.parseInt(window.getComputedStyle(player).getProperty
 let yPercentFactor = Number.parseInt(window.getComputedStyle(player).getPropertyValue('top'));
 xPercentFactor /= 50;
 yPercentFactor /= 50;
+
+let length = 5;
 
 //These need to be global as they are used in multiple methods
 let newXPos = 50;
@@ -41,6 +46,8 @@ function HandleInput(key) {
 }
 
 function UpdatePosition() {
+    if (isDead) return;
+
     let xPos = Number.parseInt(window.getComputedStyle(player).getPropertyValue('left'));
     xPos /= xPercentFactor;
     let xUpdate = Number.parseInt(player.dataset.xDir);
@@ -50,6 +57,18 @@ function UpdatePosition() {
 
     newXPos = xPos + xUpdate;
     newYPos = yPos + yUpdate;
+
+    let newTile = document.createElement("div");
+    newTile.className = "tile";
+    playArea.appendChild(newTile);
+    newTile.style.left = newXPos.toString() + '%';
+    newTile.style.top = newYPos.toString() + '%';
+
+    rearTiles.push(newTile);
+    if (rearTiles.length > length) {
+        rearTiles[0].style.padding = '0px';
+        console.log(rearTiles[0]);
+    }
 
     if (newXPos > 0 && newXPos < 100)
         player.style.left = newXPos.toString() + '%';
