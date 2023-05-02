@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pythagorean Theorem Calculator</title>
+    <link rel="stylesheet" href="../../main_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+    <script src="../../link_cont.js"></script>
+    <script src="pythecont.js" defer></script>
+</head>
+<body>
+    <div id="content">
+        <h1>Pythagorean Theorem Calculator</h1>
+        <h3>Calculates the Pythagorean Theorem</h3>
+        <div class="spacer_s"></div>
+        
+        <select class="selector" name="main_select" id="selector">
+            <option value="h">c1 and c2 are known (calculate h)</option>
+            <option value="c1">h and c2 are known (calculate c1)</option>
+            <option value="c2">h and c1 are known (calculate c2)</option>
+        </select>
+        <br>
+        <input class="input_field" id="input1" type="text" placeholder="c1" maxlength="15">
+        <input class="input_field" id="input2" type="text" placeholder="c2" maxlength="15">
+        <br>
+        <button class="thing_button" onclick="Execute()">Calculate</button>
+        <p id="output"></p>
+
+        <div class="spacer_l"></div>
+        <p>c1^2 + c2^2 = h^2</p>
+        <img src="../../Assets/tringle.png" alt="tringle">
+        <div class="spacer_s"></div>
+        <button class="thing_button" onclick="Link('https://en.wikipedia.org/wiki/Pythagorean_theorem')">What the hell is this?</button>
+        <div class="spacer_l"></div>
+        <button class="thing_button" onclick="Link('../aop.html')">Back</button>
+    </div>
+</body>
+</html>
