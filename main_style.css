@@ -11,6 +11,10 @@ body {
     transform: translateX(-50%);
 }
 
+#top_bar {
+    font-size: 20px;
+}
+
 .spacer_s {
     padding-bottom: 25px;
 }
