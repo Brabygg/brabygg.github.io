@@ -18,12 +18,13 @@ function CheckWin() {
     "a body pillow of a dragon",
     "one ticket for American Airlines Flight 11 in the morning of September 11th, 2001",
     "absolute vacuum",
-    "ten particles of antimatter"
+    "ten particles of antimatter",
+    "a monument to an evil dictator of your choice"
     ];
 
-    if (purchaseCount > 10) {
+    if (purchaseCount > 50) {
         purchaseInput.value = 10;
-        purchaseCount = 10;
+        purchaseCount = 50;
     }
     if (!/^\d+$/.test(purchaseCount)) {
         purchaseInput.value = 1;
