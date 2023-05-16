@@ -1,7 +1,12 @@
 const purchaseInput = document.getElementById("purchase_input");
 const output = document.getElementById("output");
 
+document.addEventListener('keydown', handleInputs, false);
 
+function handleInputs(event) {
+    if (event.key !== 'Enter') return;
+    CheckWin();
+}
 
 function CheckWin() {
     let winsCount = 3;
@@ -15,11 +20,21 @@ function CheckWin() {
     "a spare kidney",
     "one aglet",
     "a castle made of the rarest material on Earth (tritium, which is gaseous at room temperature)",
-    "a body pillow of a dragon",
+    "a life-sized and weighted body pillow of a dragon",
     "one ticket for American Airlines Flight 11 in the morning of September 11th, 2001",
     "absolute vacuum",
     "ten particles of antimatter",
-    "a monument to an evil dictator of your choice"
+    "a monument to an evil dictator of your choice",
+    "two mathematically perfect aluminum spheres",
+    "an imaginary number",
+    "an original joke",
+    "nothing (ha, gotcha)",
+    "the definition of insanity",
+    "ownership rights to an abandoned mental asylum in Slovakia",
+    "an expired marriage certificate",
+    "a warrant for your own arrest",
+    "enough money to pay your bailout (only valid in countries where bailout is illegal)",
+    "sheet music for an advanced piece on an instrument you cannot play"
     ];
 
     if (purchaseCount > 50) {
