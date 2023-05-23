@@ -6,12 +6,13 @@
     <link rel="stylesheet" href="../../main_style.css">
     <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
     <script src="comedy.js" defer></script>
+    <script src="../../link_cont.js"></script>
 </head>
 <body>
     <div id="content">
         <h1>The Comedy Generator</h1>
         <h3>You are going to die of laughter</h3>
-        <div class="spacer_l"></div>
+        <div class="spacer_s"></div>
         <div id="inner">
             <h2>Set joke parameters</h2><hr>
             <b>Customize categories: <input type="checkbox" id="cat_button" onclick="CatClick()"></b><hr>
@@ -22,13 +23,15 @@
             </div>
             <b>Unsafe mode: <input type="checkbox" id="usmode_button" onclick="USMClick()"></b><hr>
             <div id="unsafe_cats" hidden="true">
-                <b>NSFW<input type="checkbox" id="n" checked></b><b> Religious<input type="checkbox"id='re' checked></b>
-                <b> Political<input type="checkbox" id='p' checked></b><b> Racism<input type="checkbox" id='r' checked></b>
-                <b> Sexism<input type="checkbox" id='s' checked></b><hr>
+                <b>NSFW<input type="checkbox" id="n"></b><b> Religious<input type="checkbox"id='re'></b>
+                <b> Political<input type="checkbox" id='p'></b><b> Racism<input type="checkbox" id='r'></b>
+                <b> Sexism<input type="checkbox" id='s'></b><hr>
             </div>
             <button class="thing_button_s" id="comedy_button" onclick="GetJoke()">Be Amazed</button>
         </div>
         <p id="output"></p>
+        <div class="spacer_l"></div>
+        <button class="thing_button" onclick="Link('../aop.html')">Back</button>
     </div>
 </body>
 </html>
