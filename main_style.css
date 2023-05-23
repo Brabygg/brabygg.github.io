@@ -39,8 +39,8 @@ body {
 
 .thing_button {
     border-radius: 10px;
-    padding-top: 1%;
-    padding-bottom: 1%;
+    padding-top: 10px;
+    padding-bottom: 10px;
     background-color: #070648;
     color: white;
     font-size: 30px;
