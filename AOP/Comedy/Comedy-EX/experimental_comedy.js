@@ -4,36 +4,31 @@ class JokeHandlerRequest {
     }
 
     async GetJoke() {
-        await fetch(
-            this.address,
-            {
+        try {
+            const response = await fetch(this.address, {
                 method: "GET",
-                headers: new Headers({
-                    Accept: "application/json"
-                })
+                headers: new Headers({ Accept: "application/json" }),
+            });
+            const responseData = await response.json();
+
+            let joke = "Balls. (this isn't actually a joke, and there's been an error for some reason)";
+
+            if (responseData.type === 'twopart') {
+                joke = responseData.setup + " " + responseData.delivery;
+            } else {
+                joke = responseData.joke;
             }
-        )
-            .then(res => res.json())
-            .then(response => {
-                
-                let joke = "Balls. (this isn't actually a joke, and there's been an error for some reason)";
-    
-                if (response.type === 'twopart') {
-                    joke = response.setup + " " + response.delivery;
-                } else {
-                    joke = response.joke;
-                }
 
-                console.log(`Response received, ID ${response.id}`);
+            console.log(`Response received, ID ${responseData.id}`);
+            return joke;
 
-                console.log(joke);
-
-                return joke;
-                
-            })
-            .catch(error => console.log(error));
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
     }
 }
+
 
 let catButton = document.getElementById('cat_button');
 let usmButton = document.getElementById('usmode_button');
@@ -46,6 +41,7 @@ let usmEnabled;
 let catsEnabled;
 
 let requestAddress;
+
 
 function USMClick() {
     if (usmEnabled) {
@@ -69,22 +65,24 @@ function CatClick() {
 }
 
 function ReadCategories() {
-    if (!catsEnabled || !m.checked && !pr.checked && !d.checked && !pu.checked && !sp.checked && !c.checked) {
+
+    if (!catsEnabled || (!m.checked && !pr.checked && !d.checked && !pu.checked && !sp.checked && !c.checked)) {
         requestAddress = requestAddress + 'Any';
         return;
     }
-    if (m.checked)
-        requestAddress = requestAddress + 'Misc,';
-    if (pr.checked)
-        requestAddress = requestAddress + 'Programming,';
-    if (d.checked)
-        requestAddress = requestAddress + 'Dark,';
-    if (pu.checked)
-        requestAddress = requestAddress + 'Pun,';
-    if (sp.checked)
-        requestAddress = requestAddress + 'Spooky,';
-    if (c.checked)
-        requestAddress = requestAddress + 'Christmas,';
+
+    if (m.checked) requestAddress = requestAddress + 'Misc,';
+
+    if (pr.checked) requestAddress = requestAddress + 'Programming,';
+
+    if (d.checked) requestAddress = requestAddress + 'Dark,';
+
+    if (pu.checked) requestAddress = requestAddress + 'Pun,';
+
+    if (sp.checked) requestAddress = requestAddress + 'Spooky,';
+
+    if (c.checked) requestAddress = requestAddress + 'Christmas,';
+
 
     requestAddress = requestAddress.substring(0, requestAddress.length - 1);
     console.log(`Appending categories, current address is ${requestAddress}`);
@@ -95,36 +93,42 @@ function ReadUnsafeCategories() {
         requestAddress = requestAddress + '?blacklistFlags=nsfw,religious,political,racist,sexist,explicit';
         return;
     }
+
     if (n.checked && re.checked && p.checked && r.checked && s.checked) return;
-    
+
     requestAddress = requestAddress + '?blacklistflags=';
-    if (!n.checked)
-        requestAddress = requestAddress + 'nsfw,';
-    if (!re.checked)
-        requestAddress = requestAddress + 'religious,';
-    if (!p.checked)
-        requestAddress = requestAddress + 'political,';
-    if (!r.checked)
-        requestAddress = requestAddress + 'racist,';
-    if (!s.checked)
-        requestAddress = requestAddress + 'sexist,';
+
+    if (!n.checked) requestAddress = requestAddress + 'nsfw,';
+
+    if (!re.checked) requestAddress = requestAddress + 'religious,';
+
+    if (!p.checked) requestAddress = requestAddress + 'political,';
+
+    if (!r.checked) requestAddress = requestAddress + 'racist,';
+
+    if (!s.checked) requestAddress = requestAddress + 'sexist,';
 
     requestAddress = requestAddress.substring(0, requestAddress.length - 1);
     console.log(`Removing blacklists, current address is ${requestAddress}`);
 }
 
-
 async function GetJokeEx() {
+
     output.innerHTML = 'Fetching...';
 
-    requestAddress = 'https://v2.jokeapi.dev/joke/'
+    requestAddress = 'https://v2.jokeapi.dev/joke/';
 
     ReadCategories();
     ReadUnsafeCategories();
 
-    console.log(requestAddress);
-
     let requestObject = new JokeHandlerRequest(requestAddress);
+    let requestedJoke = await requestObject.GetJoke();
 
-    output.innerHTML = await requestObject.GetJoke();
+    console.log(requestedJoke);
+    output.innerHTML = requestedJoke;
 }
+
+
+
+
+
